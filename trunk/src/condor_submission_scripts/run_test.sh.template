@@ -1,0 +1,14 @@
+#!/bin/bash
+
+trap "killall java" SIGTERM
+set -x 
+
+pid=$1
+filename=${pid}.log
+
+[ -z "$pid" ] && { echo "PID expected as a param"; exit -1; }
+
+cat test.xml >> $filename
+for i in `seq 1 ITERATIONS`; do 
+	java -Xmx3G -jar simulator.jar 1 N_PARAM K_PARAM T_PARAM 3 DISKS MACHINES  >> $filename
+done

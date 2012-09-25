@@ -1,0 +1,1 @@
+awk -F',' 'BEGIN{mins=-1;mine=-1}{if (mins<0 || mins>$4) mins=$4; if (mine<0||mine<$5) mine=$5;}END{print (mine-mins)/3600/24/365}'
