@@ -1,0 +1,19 @@
+universe = vanilla
+Executable = run_test.sh
+should_transfer_files = yes
+when_to_transfer_output = always
+transfer_input_files= simulator.jar, test.xml.template 
+arguments = $(IT)
+#Requirements = (Arch == "X86_64" || Arch == "INTEL" ) && (Memory > 2000) && HasJava
+Requirements = (Arch == "X86_64" ) && (Memory > 3000) && HasJava
+
+stream_error = true
+Error = err.$(IT)
+Log = /tmp/log
+Rank = Memory
+
++Group = "PROF" 
++Project = "OPERATING_DISTRIBUTED_SYSTEMS" 
++ProjectDescription = "simulation of a distributed storage"
+
+Queue 1
